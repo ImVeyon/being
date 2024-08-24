@@ -66,7 +66,7 @@
             <div class="container hero-content">
                <div class="row">
                   <div class="col-sm-12 text-center">
-                     <h1 class="large mb-20">  莹 莹 生 日 快 乐 ！</h1>          
+                     <h1 class="large mb-20">   莹 莹 生 日 快 乐 ！</h1>          
                      <p class="mt-20 lead"></p>
                   </div>
                </div>
@@ -275,6 +275,25 @@
       };
    </script>
 
+   // 引入 Fireworks.js 库
+<script src="https://cdn.jsdelivr.net/npm/fireworks-js@latest/dist/fireworks.min.js"></script>
+
+<script>
+const fireworks = new Fireworks({
+    target: document.body, // 烟花效果的容器元素
+    hue: { min: 0, max: 360 }, // 烟花颜色的色相范围
+    rocketsPoint: 50, // 烟花发射点的高度（页面高度的百分比）
+    lineWidth: { min: 1, max: 3 }, // 烟花线条的宽度范围
+    brightness: { min: 50, max: 80 }, // 烟花亮度范围
+    opacity: 0.5, // 烟花透明度
+    sound: true, // 是否播放声音效果
+});
+document.addEventListener('click', (event) => {
+    fireworks.fire(); // 触发烟花效果
+});
+</script>
+   
+   
    <audio id="main_audio" autoplay="autoplay" preload="auto" loop="">
       <source
          src="http://m128.xiami.net/869/2110248869/2103472457/1801400569_1516527396061.mp3?auth_key=1519095600-0-0-c65ae8fba0efb9eae88785e8b6322bd9"
