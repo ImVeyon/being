@@ -287,11 +287,17 @@
    
    <audio id="main_audio" preload="auto" loop autoplay>
       <source
-         src="./Things You Said.mp3"
+         src="/Things You Said.mp3"
          type="audio/mpeg">
       <source
-         src="./Things You Said.mp3"
+         src="/Things You Said.mp3"
          type="audio/mp3">
+      <source
+         src="/Things You Said.mp3"
+         type="audio/mpeg3">
+      <source
+         src="/Things You Said.mp3"
+         type="audio/x-mpeg-3">
    </audio>
 
    <script type="text/javascript" src="js/count.js"></script>
@@ -390,6 +396,13 @@
       var audio = document.getElementById('main_audio');
       var musicControl = document.getElementById('musicControl');
       var isPlaying = true;  // 初始状态为播放
+
+      // 确保音频加载完成后自动播放
+      audio.addEventListener('canplaythrough', function() {
+         audio.play().catch(function(error) {
+            console.log("播放失败:", error);
+         });
+      }, { once: true });
 
       // 创建音乐图标包装器
       const musicIcon = document.createElement('div');
@@ -773,11 +786,17 @@
    
    <audio id="main_audio" preload="auto" loop autoplay>
       <source
-         src="./Things You Said.mp3"
+         src="/Things You Said.mp3"
          type="audio/mpeg">
       <source
-         src="./Things You Said.mp3"
+         src="/Things You Said.mp3"
          type="audio/mp3">
+      <source
+         src="/Things You Said.mp3"
+         type="audio/mpeg3">
+      <source
+         src="/Things You Said.mp3"
+         type="audio/x-mpeg-3">
    </audio>
 
    <script type="text/javascript" src="js/count.js"></script>
@@ -876,6 +895,13 @@
       var audio = document.getElementById('main_audio');
       var musicControl = document.getElementById('musicControl');
       var isPlaying = true;  // 初始状态为播放
+
+      // 确保音频加载完成后自动播放
+      audio.addEventListener('canplaythrough', function() {
+         audio.play().catch(function(error) {
+            console.log("播放失败:", error);
+         });
+      }, { once: true });
 
       // 创建音乐图标包装器
       const musicIcon = document.createElement('div');
