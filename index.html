@@ -7,7 +7,7 @@
 <body>
    <meta name="description" content="莹莹生快">
    <title>Our Love Harbour</title>
-   <link rel="icon" type="image/x-icon" href="https://i.loli.net/2021/06/03/lFg2V4WUcmkB98G.png">
+   <link rel="icon" type="image/svg+xml" href="favicon.svg">
    <meta name="language" content="zh-CN">
    <meta name="title" content="莹莹生快">
    <meta name="github" content="https://github.com/Simonshek0129/being">
@@ -48,9 +48,10 @@
                      </a>
                   </div>
                   <ul>
-                     <li><a id="Aa" class="scroll" href="#home">首页</a></li>
-                     <li><a id="Bb" class="scroll" href="#story">语录</a></li>
-                     <li><a id="Cc" class="scroll" href="#album">回忆</a></li>
+                     <li><a id="Aa" class="scroll" href="#home">🏠 首页</a></li>
+                     <li><a id="Bb" class="scroll" href="#story">💭 语录</a></li>
+                     <li><a id="Cc" class="scroll" href="#album">📸 回忆</a></li>
+                     <li><a id="musicControl" href="javascript:void(0);" class="music-control">🎵 音乐</a></li>
                   </ul>
                </nav>
             </div>
@@ -292,7 +293,45 @@
 
    <script type="text/javascript" src="js/count.js"></script>
 
+   <style>
+      .music-control, .scroll {
+         cursor: pointer;
+         transition: all 0.3s ease;
+         display: flex;
+         align-items: center;
+      }
+      .music-control.playing, .scroll:hover {
+         color: #ff4081;
+      }
+      .music-control:hover {
+         color: #ff4081;
+      }
+   </style>
 
+   <script type="text/javascript">
+      // 音乐控制
+      var audio = document.getElementById('main_audio');
+      var musicControl = document.getElementById('musicControl');
+      var isPlaying = true;
+
+      musicControl.addEventListener('click', function() {
+         if (isPlaying) {
+            audio.pause();
+            musicControl.classList.remove('playing');
+         } else {
+            audio.play();
+            musicControl.classList.add('playing');
+         }
+         isPlaying = !isPlaying;
+      });
+
+      // 页面加载时自动播放音乐
+      window.addEventListener('load', function() {
+         audio.play().catch(function(error) {
+            console.log("自动播放失败，需要用户交互才能播放");
+         });
+      });
+   </script>
 
 </body>
 
