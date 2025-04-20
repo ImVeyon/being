@@ -51,7 +51,7 @@
                      <li><a id="Aa" class="scroll" href="#home">🏠 首页</a></li>
                      <li><a id="Bb" class="scroll" href="#story">💭 语录</a></li>
                      <li><a id="Cc" class="scroll" href="#album">📸 回忆</a></li>
-                     <li><a id="musicControl" href="javascript:void(0);" class="music-control">🎵 音乐</a></li>
+                     <li><a id="musicControl" href="javascript:void(0);" class="music-control">🎵</a></li>
                   </ul>
                </nav>
             </div>
@@ -307,6 +307,58 @@
          color: #ff4081;
       }
 
+      /* 音乐控制图标样式 */
+      .music-icon-wrapper {
+         position: relative;
+         width: 28px;
+         height: 28px;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         margin: 0 5px;
+      }
+      .music-icon-circle {
+         position: absolute;
+         width: 100%;
+         height: 100%;
+         border: 1.5px solid #ffffff;
+         border-radius: 50%;
+         box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+      }
+      .music-icon-slash {
+         position: absolute;
+         width: 100%;
+         height: 1.5px;
+         background-color: #ffffff;
+         transform: rotate(-45deg);
+         opacity: 0;
+         transition: opacity 0.3s ease;
+         box-shadow: 0 0 3px rgba(255, 255, 255, 0.3);
+      }
+      .music-control:not(.playing) .music-icon-slash {
+         opacity: 1;
+      }
+      .music-icon-wrapper span {
+         font-size: 14px;
+         line-height: 1;
+         margin-top: -1px;
+         color: #ffffff;
+         text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+         filter: brightness(0) invert(1);
+      }
+      .music-control:hover .music-icon-circle {
+         border-color: #ff4081;
+         box-shadow: 0 0 8px rgba(255, 64, 129, 0.5);
+      }
+      .music-control:hover .music-icon-slash {
+         background-color: #ff4081;
+         box-shadow: 0 0 5px rgba(255, 64, 129, 0.5);
+      }
+      .music-control:hover span {
+         color: #ff4081;
+         text-shadow: 0 0 8px rgba(255, 64, 129, 0.5);
+      }
+
       /* 鼠标特效样式 */
       #cursor-effect {
          position: fixed;
@@ -335,6 +387,17 @@
       var audio = document.getElementById('main_audio');
       var musicControl = document.getElementById('musicControl');
       var isPlaying = true;  // 初始状态为播放
+
+      // 创建音乐图标包装器
+      const musicIcon = document.createElement('div');
+      musicIcon.className = 'music-icon-wrapper';
+      musicIcon.innerHTML = `
+         <div class="music-icon-circle"></div>
+         <div class="music-icon-slash"></div>
+         <span>🎵</span>
+      `;
+      musicControl.innerHTML = '';
+      musicControl.appendChild(musicIcon);
 
       // 设置初始状态
       musicControl.classList.add('playing');
@@ -471,7 +534,7 @@
                      <li><a id="Aa" class="scroll" href="#home">🏠 首页</a></li>
                      <li><a id="Bb" class="scroll" href="#story">💭 语录</a></li>
                      <li><a id="Cc" class="scroll" href="#album">📸 回忆</a></li>
-                     <li><a id="musicControl" href="javascript:void(0);" class="music-control">🎵 音乐</a></li>
+                     <li><a id="musicControl" href="javascript:void(0);" class="music-control">🎵</a></li>
                   </ul>
                </nav>
             </div>
@@ -727,6 +790,58 @@
          color: #ff4081;
       }
 
+      /* 音乐控制图标样式 */
+      .music-icon-wrapper {
+         position: relative;
+         width: 28px;
+         height: 28px;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         margin: 0 5px;
+      }
+      .music-icon-circle {
+         position: absolute;
+         width: 100%;
+         height: 100%;
+         border: 1.5px solid #ffffff;
+         border-radius: 50%;
+         box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+      }
+      .music-icon-slash {
+         position: absolute;
+         width: 100%;
+         height: 1.5px;
+         background-color: #ffffff;
+         transform: rotate(-45deg);
+         opacity: 0;
+         transition: opacity 0.3s ease;
+         box-shadow: 0 0 3px rgba(255, 255, 255, 0.3);
+      }
+      .music-control:not(.playing) .music-icon-slash {
+         opacity: 1;
+      }
+      .music-icon-wrapper span {
+         font-size: 14px;
+         line-height: 1;
+         margin-top: -1px;
+         color: #ffffff;
+         text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+         filter: brightness(0) invert(1);
+      }
+      .music-control:hover .music-icon-circle {
+         border-color: #ff4081;
+         box-shadow: 0 0 8px rgba(255, 64, 129, 0.5);
+      }
+      .music-control:hover .music-icon-slash {
+         background-color: #ff4081;
+         box-shadow: 0 0 5px rgba(255, 64, 129, 0.5);
+      }
+      .music-control:hover span {
+         color: #ff4081;
+         text-shadow: 0 0 8px rgba(255, 64, 129, 0.5);
+      }
+
       /* 鼠标特效样式 */
       #cursor-effect {
          position: fixed;
@@ -755,6 +870,17 @@
       var audio = document.getElementById('main_audio');
       var musicControl = document.getElementById('musicControl');
       var isPlaying = true;  // 初始状态为播放
+
+      // 创建音乐图标包装器
+      const musicIcon = document.createElement('div');
+      musicIcon.className = 'music-icon-wrapper';
+      musicIcon.innerHTML = `
+         <div class="music-icon-circle"></div>
+         <div class="music-icon-slash"></div>
+         <span>🎵</span>
+      `;
+      musicControl.innerHTML = '';
+      musicControl.appendChild(musicIcon);
 
       // 设置初始状态
       musicControl.classList.add('playing');
