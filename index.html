@@ -285,9 +285,9 @@
 
 
    
-   <audio id="main_audio" preload="auto" loop muted>
+   <audio id="main_audio" preload="auto" loop autoplay>
       <source
-         src="New boy.MP3"
+         src="Things You Said.mp3"
          type="audio/mpeg">
    </audio>
 
@@ -306,16 +306,39 @@
       .music-control:hover {
          color: #ff4081;
       }
+
+      /* 鼠标特效样式 */
+      #cursor-effect {
+         position: fixed;
+         width: 20px;
+         height: 20px;
+         background: rgba(255, 64, 129, 0.5);
+         border-radius: 50%;
+         pointer-events: none;
+         z-index: 9999;
+         transition: all 0.1s ease;
+      }
+      .cursor-particle {
+         position: fixed;
+         width: 8px;
+         height: 8px;
+         background: #ff4081;
+         border-radius: 50%;
+         pointer-events: none;
+         z-index: 9998;
+         transition: all 0.3s ease;
+      }
    </style>
 
    <script type="text/javascript">
       // 音乐控制
       var audio = document.getElementById('main_audio');
       var musicControl = document.getElementById('musicControl');
-      var isPlaying = false;  // 初始状态为未播放
+      var isPlaying = true;  // 初始状态为播放
 
       // 设置初始状态
-      musicControl.classList.remove('playing');
+      musicControl.classList.add('playing');
+      audio.muted = false;
 
       musicControl.addEventListener('click', function() {
          if (isPlaying) {
@@ -328,6 +351,71 @@
             musicControl.classList.add('playing');
          }
          isPlaying = !isPlaying;
+      });
+
+      // 鼠标特效
+      const cursor = document.createElement('div');
+      cursor.id = 'cursor-effect';
+      document.body.appendChild(cursor);
+
+      const particles = [];
+      const particleCount = 5;
+
+      // 创建粒子
+      for (let i = 0; i < particleCount; i++) {
+         const particle = document.createElement('div');
+         particle.className = 'cursor-particle';
+         document.body.appendChild(particle);
+         particles.push({
+            element: particle,
+            x: 0,
+            y: 0
+         });
+      }
+
+      let mouseX = 0;
+      let mouseY = 0;
+      let cursorX = 0;
+      let cursorY = 0;
+
+      // 更新鼠标位置
+      document.addEventListener('mousemove', (e) => {
+         mouseX = e.clientX;
+         mouseY = e.clientY;
+      });
+
+      // 动画循环
+      function animate() {
+         // 更新主光标位置
+         cursorX += (mouseX - cursorX) * 0.1;
+         cursorY += (mouseY - cursorY) * 0.1;
+         cursor.style.left = cursorX + 'px';
+         cursor.style.top = cursorY + 'px';
+
+         // 更新粒子位置
+         particles.forEach((particle, index) => {
+            const delay = index * 0.08;
+            particle.x += (mouseX - particle.x) * (0.1 - delay);
+            particle.y += (mouseY - particle.y) * (0.1 - delay);
+            particle.element.style.left = particle.x + 'px';
+            particle.element.style.top = particle.y + 'px';
+         });
+
+         requestAnimationFrame(animate);
+      }
+
+      animate();
+
+      // 鼠标悬停效果
+      document.querySelectorAll('a, button').forEach(element => {
+         element.addEventListener('mouseenter', () => {
+            cursor.style.transform = 'scale(1.5)';
+            cursor.style.background = 'rgba(255, 64, 129, 0.3)';
+         });
+         element.addEventListener('mouseleave', () => {
+            cursor.style.transform = 'scale(1)';
+            cursor.style.background = 'rgba(255, 64, 129, 0.5)';
+         });
       });
    </script>
 
@@ -617,9 +705,9 @@
 
 
    
-   <audio id="main_audio" preload="auto" loop muted>
+   <audio id="main_audio" preload="auto" loop autoplay>
       <source
-         src="New boy.MP3"
+         src="Things You Said.mp3"
          type="audio/mpeg">
    </audio>
 
@@ -638,16 +726,39 @@
       .music-control:hover {
          color: #ff4081;
       }
+
+      /* 鼠标特效样式 */
+      #cursor-effect {
+         position: fixed;
+         width: 20px;
+         height: 20px;
+         background: rgba(255, 64, 129, 0.5);
+         border-radius: 50%;
+         pointer-events: none;
+         z-index: 9999;
+         transition: all 0.1s ease;
+      }
+      .cursor-particle {
+         position: fixed;
+         width: 8px;
+         height: 8px;
+         background: #ff4081;
+         border-radius: 50%;
+         pointer-events: none;
+         z-index: 9998;
+         transition: all 0.3s ease;
+      }
    </style>
 
    <script type="text/javascript">
       // 音乐控制
       var audio = document.getElementById('main_audio');
       var musicControl = document.getElementById('musicControl');
-      var isPlaying = false;  // 初始状态为未播放
+      var isPlaying = true;  // 初始状态为播放
 
       // 设置初始状态
-      musicControl.classList.remove('playing');
+      musicControl.classList.add('playing');
+      audio.muted = false;
 
       musicControl.addEventListener('click', function() {
          if (isPlaying) {
@@ -660,6 +771,71 @@
             musicControl.classList.add('playing');
          }
          isPlaying = !isPlaying;
+      });
+
+      // 鼠标特效
+      const cursor = document.createElement('div');
+      cursor.id = 'cursor-effect';
+      document.body.appendChild(cursor);
+
+      const particles = [];
+      const particleCount = 5;
+
+      // 创建粒子
+      for (let i = 0; i < particleCount; i++) {
+         const particle = document.createElement('div');
+         particle.className = 'cursor-particle';
+         document.body.appendChild(particle);
+         particles.push({
+            element: particle,
+            x: 0,
+            y: 0
+         });
+      }
+
+      let mouseX = 0;
+      let mouseY = 0;
+      let cursorX = 0;
+      let cursorY = 0;
+
+      // 更新鼠标位置
+      document.addEventListener('mousemove', (e) => {
+         mouseX = e.clientX;
+         mouseY = e.clientY;
+      });
+
+      // 动画循环
+      function animate() {
+         // 更新主光标位置
+         cursorX += (mouseX - cursorX) * 0.1;
+         cursorY += (mouseY - cursorY) * 0.1;
+         cursor.style.left = cursorX + 'px';
+         cursor.style.top = cursorY + 'px';
+
+         // 更新粒子位置
+         particles.forEach((particle, index) => {
+            const delay = index * 0.08;
+            particle.x += (mouseX - particle.x) * (0.1 - delay);
+            particle.y += (mouseY - particle.y) * (0.1 - delay);
+            particle.element.style.left = particle.x + 'px';
+            particle.element.style.top = particle.y + 'px';
+         });
+
+         requestAnimationFrame(animate);
+      }
+
+      animate();
+
+      // 鼠标悬停效果
+      document.querySelectorAll('a, button').forEach(element => {
+         element.addEventListener('mouseenter', () => {
+            cursor.style.transform = 'scale(1.5)';
+            cursor.style.background = 'rgba(255, 64, 129, 0.3)';
+         });
+         element.addEventListener('mouseleave', () => {
+            cursor.style.transform = 'scale(1)';
+            cursor.style.background = 'rgba(255, 64, 129, 0.5)';
+         });
       });
    </script>
 
