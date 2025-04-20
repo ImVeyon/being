@@ -285,7 +285,7 @@
 
 
    
-   <audio id="main_audio" autoplay="autoplay" preload="auto" loop="">
+   <audio id="main_audio" preload="auto" loop muted>
       <source
          src="New boy.MP3"
          type="audio/mpeg">
@@ -312,24 +312,22 @@
       // 音乐控制
       var audio = document.getElementById('main_audio');
       var musicControl = document.getElementById('musicControl');
-      var isPlaying = true;
+      var isPlaying = false;  // 初始状态为未播放
+
+      // 设置初始状态
+      musicControl.classList.remove('playing');
 
       musicControl.addEventListener('click', function() {
          if (isPlaying) {
             audio.pause();
+            audio.muted = true;
             musicControl.classList.remove('playing');
          } else {
+            audio.muted = false;
             audio.play();
             musicControl.classList.add('playing');
          }
          isPlaying = !isPlaying;
-      });
-
-      // 页面加载时自动播放音乐
-      window.addEventListener('load', function() {
-         audio.play().catch(function(error) {
-            console.log("自动播放失败，需要用户交互才能播放");
-         });
       });
    </script>
 
@@ -619,7 +617,7 @@
 
 
    
-   <audio id="main_audio" autoplay="autoplay" preload="auto" loop="">
+   <audio id="main_audio" preload="auto" loop muted>
       <source
          src="New boy.MP3"
          type="audio/mpeg">
@@ -646,24 +644,22 @@
       // 音乐控制
       var audio = document.getElementById('main_audio');
       var musicControl = document.getElementById('musicControl');
-      var isPlaying = true;
+      var isPlaying = false;  // 初始状态为未播放
+
+      // 设置初始状态
+      musicControl.classList.remove('playing');
 
       musicControl.addEventListener('click', function() {
          if (isPlaying) {
             audio.pause();
+            audio.muted = true;
             musicControl.classList.remove('playing');
          } else {
+            audio.muted = false;
             audio.play();
             musicControl.classList.add('playing');
          }
          isPlaying = !isPlaying;
-      });
-
-      // 页面加载时自动播放音乐
-      window.addEventListener('load', function() {
-         audio.play().catch(function(error) {
-            console.log("自动播放失败，需要用户交互才能播放");
-         });
       });
    </script>
 
